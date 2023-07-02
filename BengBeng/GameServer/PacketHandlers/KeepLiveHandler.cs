@@ -1,6 +1,6 @@
 ﻿using Common.Serialization;
 using Common.Serialization.Packet;
-using PemukulPaku.GameServer;
+using BengBeng.GameServer;
 using Common;
 
 namespace BengBeng.GameServer.PacketHandlers
@@ -14,7 +14,7 @@ namespace BengBeng.GameServer.PacketHandlers
             WriteStream writeStream = new();
             KeepLivePacket keepLivePacket = new();
             keepLivePacket.Serialize(ref writeStream);
-            session.Send(Packet.FromStream(writeStream, CommandType.CMD_KEEP_LIVE));
+            session.Send(Packet.Create(writeStream, CommandType.CMD_KEEP_LIVE));
         }
     }
 }

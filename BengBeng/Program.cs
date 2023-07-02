@@ -1,11 +1,6 @@
 ﻿using System.Net.NetworkInformation;
 using BengBeng.GameServer;
 using Common;
-using Common.Serialization;
-using Common.Serialization.ReadPacket;
-using Common.Serialization.WritePacket;
-using Newtonsoft.Json;
-using PemukulPaku.GameServer;
 
 namespace BengBeng
 {
@@ -15,6 +10,8 @@ namespace BengBeng
         {
 #if DEBUG
             Global.config.VerboseLevel = VerboseLevel.Debug;
+            /*Packet packet = new(Global.HexToBuffer("000000480001461600000000000000010000000000000000000000000000000000002E84246100206230623636316639653035646339323863633033316265396335326432366566"));
+            Global.c.Debug(packet.IsValid().ToString());*/
 #endif
             Global.c.Log("Starting...");
 

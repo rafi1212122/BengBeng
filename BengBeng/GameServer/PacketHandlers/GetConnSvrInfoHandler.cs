@@ -1,4 +1,4 @@
-﻿using PemukulPaku.GameServer;
+﻿using BengBeng.GameServer;
 using Common.Serialization;
 using Common.Serialization.ReadPacket;
 using Common.Serialization.WritePacket;
@@ -18,12 +18,12 @@ namespace BengBeng.GameServer.PacketHandlers
             SPWritePacket sPPacket = new();
             WriteStream sPWriteStream = new();
             sPPacket.Serialize(ref sPWriteStream);
-            session.Send(Packet.FromStream(sPWriteStream, CommandType.CMD_SP_STATUS));
+            session.Send(Packet.Create(sPWriteStream, CommandType.CMD_SP_STATUS));
 
             GetConnSvrInfoWritePacket writePacket = new();
             WriteStream writeStream = new();
             writePacket.Serialize(ref writeStream);
-            session.Send(Packet.FromStream(writeStream, CommandType.CMD_GET_CONNSVRINFO));
+            session.Send(Packet.Create(writeStream, CommandType.CMD_GET_CONNSVRINFO));
         }
     }
 }

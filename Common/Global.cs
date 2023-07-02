@@ -12,6 +12,7 @@ namespace Common
         public static readonly IMongoDatabase db = MongoClient.GetDatabase("BengBeng");
 
         public static long GetUnixInSeconds() => ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds();
+        public static uint GetRandomSeed() => (uint)(GetUnixInSeconds() * new Random().Next(1, 10) / 100);
 
         public static byte[] HexToBuffer(string hex)
         {

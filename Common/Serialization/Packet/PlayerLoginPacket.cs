@@ -27,7 +27,8 @@ namespace Common.Serialization.Packet
 
         public void Serialize(ref WriteStream writeStream)
         {
-            writeStream.Serialize(strUUID);
+            sendUUID = strDeviceUUID;
+            writeStream.Serialize(sendUUID);
         }
 
         public void Serialize(ReadStream readStream)

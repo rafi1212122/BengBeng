@@ -3,7 +3,7 @@ using System.Net;
 using Common;
 using Common.Utils;
 
-namespace PemukulPaku.GameServer
+namespace BengBeng.GameServer
 {
     public class Server
     {

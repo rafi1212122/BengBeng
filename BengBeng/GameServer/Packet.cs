@@ -1,5 +1,4 @@
-﻿using PemukulPaku.GameServer;
-using Common.Serialization;
+﻿using Common.Serialization;
 using Common.Utils;
 using System.Reflection;
 using System.Buffers.Binary;
@@ -46,43 +45,60 @@ namespace BengBeng.GameServer
             }
         }
 
-        public static Packet FromStream(WriteStream writeStream, CommandType command)
+        public static Packet Create(WriteStream writeStream, CommandType command)
         {
             byte[] streamBytes = writeStream.GetOccupied();
             byte[] packet = new byte[streamBytes.Length + 38];
+            short cmdId = (short)command;
             Array.Copy(streamBytes, 0, packet, 38, streamBytes.Length);
             BinaryPrimitives.WriteInt32BigEndian(packet, packet.Length);
-            BinaryPrimitives.WriteInt16BigEndian(packet.AsSpan()[4..], (short)command);
+            BinaryPrimitives.WriteInt16BigEndian(packet.AsSpan()[4..], cmdId);
             BinaryPrimitives.WriteUInt16BigEndian(packet.AsSpan()[6..], 17942);
             BinaryPrimitives.WriteUInt64BigEndian(packet.AsSpan()[8..], ulong.MaxValue);
             // BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[16..], 1);
             // BinaryPrimitives.WriteInt16BigEndian(packet.AsSpan()[28..], 0x0400);
-            BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], Convert.ToInt64(Crc32.Compute(packet)));
+            if (cmdId == 6 || cmdId == 17)
+                BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], Convert.ToInt64(Crc32.Compute(packet)));
+            else
+                BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], Convert.ToInt64(Crc32.Compute(4075075703, packet)));
+            // BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], (long)(((ulong)(DateTime.Now.Ticks / 10000L) / 1000UL) << 32 | Convert.ToUInt64(Crc32.Compute(packet))));
+            return new Packet(packet);
+        }
+
+        public static Packet Create(CommandType command)
+        {
+            byte[] packet = new byte[38];
+            short cmdId = (short)command;
+            BinaryPrimitives.WriteInt32BigEndian(packet, packet.Length);
+            BinaryPrimitives.WriteInt16BigEndian(packet.AsSpan()[4..], cmdId);
+            BinaryPrimitives.WriteUInt16BigEndian(packet.AsSpan()[6..], 17942);
+            BinaryPrimitives.WriteUInt64BigEndian(packet.AsSpan()[8..], ulong.MaxValue);
+            // BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[16..], 1);
+            // BinaryPrimitives.WriteInt16BigEndian(packet.AsSpan()[28..], 0x0400);
+            if (cmdId == 6 || cmdId == 17)
+                BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], Convert.ToInt64(Crc32.Compute(packet)));
+            else
+                BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], Convert.ToInt64(Crc32.Compute(4075075703, packet)));
             // BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], (long)(((ulong)(DateTime.Now.Ticks / 10000L) / 1000UL) << 32 | Convert.ToUInt64(Crc32.Compute(packet))));
             return new Packet(packet);
         }
 
         public bool IsValid()
         {
-            byte[] tmpBuf = new byte[buf.Length];
-            Array.Copy(buf, tmpBuf, buf.Length);
-
             byte[] compareHash = new byte[4];
-            Array.Copy(tmpBuf, 34, compareHash, 0, 4);
-            byte[] hash = new byte[8];
-            Array.Copy(hash, 0, tmpBuf, 30, 8);
+            Array.Copy(buf, 34, compareHash, 0, 4);
 
-            return Crc32.Compute(tmpBuf) == BinaryPrimitives.ReverseEndianness(BitConverter.ToUInt32(compareHash));
+            return GetHash() == BinaryPrimitives.ReverseEndianness(BitConverter.ToUInt32(compareHash));
         }
 
-        public void ReHash()
+        public uint GetHash()
         {
             byte[] tmpBuf = new byte[buf.Length];
             Array.Copy(buf, tmpBuf, buf.Length);
-
             byte[] hash = new byte[8];
             Array.Copy(hash, 0, tmpBuf, 30, 8);
-            Array.Copy(buf, 34, BitConverter.GetBytes(Crc32.Compute(tmpBuf)), 0, 4);
+
+            return (cmdId == 6 || cmdId == 17) ? Crc32.Compute(tmpBuf) : Crc32.Compute(4075075703, tmpBuf);
         }
     }
 

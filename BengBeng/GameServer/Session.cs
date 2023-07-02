@@ -5,7 +5,7 @@ using Common;
 using Common.Serialization;
 using Common.Utils;
 
-namespace PemukulPaku.GameServer
+namespace BengBeng.GameServer
 {
     public class Session
     {
@@ -55,6 +55,8 @@ namespace PemukulPaku.GameServer
                         c.Debug($"Found {packets.Count} packet(s)");
                         foreach (Packet packet in packets)
                         {
+                            if (!packet.IsValid())
+                                c.Warn("Invalid CRC!");
                             ProcessPacket(packet, true);
                         }
                     }
@@ -64,6 +66,8 @@ namespace PemukulPaku.GameServer
                     break;
                 }
                 await Task.Delay(10);
+                if (Global.GetUnixInSeconds() > LastKeepAlive + 90)
+                    break;
             }
 
             DisconnectProtocol();
@@ -81,6 +85,10 @@ namespace PemukulPaku.GameServer
                 if (handler == null)
                 {
                     c.Warn($"{PacketName} not handled!");
+                    /*if (PacketName.EndsWith("REQ"))
+                        Send(Packet.Create((CommandType)Enum.ToObject(typeof(CommandType), packet.cmdId + 1)));
+                    else
+                        Send(Packet.Create(cmdId));*/
                     return;
                 }
 
