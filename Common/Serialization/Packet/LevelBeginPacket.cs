@@ -33,7 +33,7 @@
             rareDropType = Array.Empty<byte>();
             rareDropId = Array.Empty<short>();
             rareDropLevel = Array.Empty<byte>();
-            retCode = 2;
+            retCode = 0;
             id = 0;
             useSavedStamina = 0;
             equipCount = 0;

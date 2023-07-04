@@ -1,8 +1,10 @@
-﻿namespace Common.Serialization.WritePacket
+﻿using System.Text;
+
+namespace Common.Serialization.WritePacket
 {
     public class QueryPlayerDataWritePacket : IBasePacket
     {
-        private const int MAX_NICK_NAME_LENGTH = 25;
+        internal const int MAX_NICK_NAME_LENGTH = 25;
         private byte requestType;
         private VAR_DATA_STRING playerData;
 
@@ -105,6 +107,18 @@
             return data;
         }
 
+        public void WriteLoginCount(byte days)
+        {
+            WriteType(QueryPlayerDataWritePacket.DATA_TYPE.SUM_LOGIN_COUNT);
+            Serialize(days);
+        }
+
+        public void WriteMaxFriends(ushort num)
+        {
+            WriteType(QueryPlayerDataWritePacket.DATA_TYPE.MAX_FRIENDS);
+            Serialize(num);
+        }
+
         public void WriteStoryProgress(ushort progress)
         {
             WriteType(QueryPlayerDataWritePacket.DATA_TYPE.STORY_PROGRESS);
@@ -135,6 +149,12 @@
             Serialize(exp);
         }
 
+        public void WriteFriendPoints(uint fp)
+        {
+            WriteType(QueryPlayerDataWritePacket.DATA_TYPE.FRIEND_POINTS);
+            Serialize(fp);
+        }
+
         public void WriteHcoin(uint hcoin)
         {
             WriteType(QueryPlayerDataWritePacket.DATA_TYPE.H_COINS);
@@ -145,6 +165,36 @@
         {
             WriteType(QueryPlayerDataWritePacket.DATA_TYPE.S_COINS);
             Serialize(scoin);
+        }
+
+        public void WriteNick(string nick)
+        {
+            UTF8Encoding utf8Encoding = new();
+            WriteType(QueryPlayerDataWritePacket.DATA_TYPE.NICK_NAME);
+            byte[] nickBytes = utf8Encoding.GetBytes(nick);
+            byte[] setBytes = new byte[QueryPlayerDataWritePacket.MAX_NICK_NAME_LENGTH];
+            Array.Copy(nickBytes, setBytes, nickBytes.Length);
+            Serialize(setBytes);
+        }
+
+        public void WriteCms(string cmsName)
+        {
+            UTF8Encoding utf8Encoding = new();
+            WriteType(QueryPlayerDataWritePacket.DATA_TYPE.CMS_NAME);
+            byte[] nickBytes = utf8Encoding.GetBytes(cmsName);
+            byte[] setBytes = new byte[45];
+            Array.Copy(nickBytes, setBytes, nickBytes.Length);
+            Serialize(setBytes);
+        }
+        
+        public void WriteEquips(params int[] items)
+        {
+            WriteType(QueryPlayerDataWritePacket.DATA_TYPE.EQUIPED_ITEMS);
+            Serialize((byte)items.Length);
+            foreach (int item in items)
+            {
+                Serialize(item);
+            }
         }
     }
 }

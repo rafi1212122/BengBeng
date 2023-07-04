@@ -13,6 +13,9 @@ namespace BengBeng.GameServer.PacketHandlers
             WriteStream writeStream = new();
             LevelBeginPacket levelBeginPacket = new();
             levelBeginPacket.Serialize(readStream);
+            levelBeginPacket.id = 1;
+            levelBeginPacket.attackPlayerId = 4001;
+            levelBeginPacket.levelGrade = 3;
             levelBeginPacket.Serialize(ref writeStream);
             session.c.Debug(JsonConvert.SerializeObject(levelBeginPacket));
 

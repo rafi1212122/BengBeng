@@ -9,11 +9,17 @@ namespace BengBeng.GameServer.PacketHandlers
         public void Handle(Session session, Packet packet)
         {
             PlayerDataWriter playerData = new();
+            playerData.WriteLoginCount(0);
+            playerData.WriteMaxFriends(50);
+            playerData.WriteFriendPoints(0);
             playerData.WriteStoryProgress(0);
             // playerData.WriteTutorialProgress(0);
+            playerData.WriteEquips(new int[] { 0, 0, 0, 0, 0, 0, 0, 0 });
+            playerData.WriteNick("KOK");
+            playerData.WriteCms("BengBeng");
             playerData.WritePlayerLevel(1);
             playerData.WritePlayerExp(10);
-            playerData.WriteStamina(10);
+            playerData.WriteStamina(200);
             playerData.WriteHcoin(69);
             playerData.WriteScoin(500);
             WriteStream writeStream = new();

@@ -88,6 +88,7 @@ namespace BengBeng.GameServer
             byte[] compareHash = new byte[4];
             Array.Copy(buf, 34, compareHash, 0, 4);
 
+
             return GetHash() == BinaryPrimitives.ReverseEndianness(BitConverter.ToUInt32(compareHash));
         }
 
