@@ -1,5 +1,5 @@
-﻿using Common.Serialization;
-using Common.Serialization.WritePacket;
+﻿using BengBeng.Common.Serialization;
+using BengBeng.Common.Serialization.WritePacket;
 using BengBeng.GameServer;
 
 namespace BengBeng.GameServer.PacketHandlers

@@ -1,5 +1,5 @@
-using Common.Utils;
-using Common;
+using BengBeng.Common.Utils;
+using BengBeng.Common;
 using Microsoft.Extensions.FileProviders;
 using System.Reflection;
 

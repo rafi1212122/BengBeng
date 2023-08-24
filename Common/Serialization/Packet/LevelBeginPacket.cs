@@ -1,4 +1,4 @@
-﻿namespace Common.Serialization.Packet
+﻿namespace BengBeng.Common.Serialization.Packet
 {
     public class LevelBeginPacket : IBasePacket
     {

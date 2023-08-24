@@ -1,5 +1,5 @@
-﻿using Common.Serialization;
-using Common.Serialization.WritePacket;
+﻿using BengBeng.Common.Serialization;
+using BengBeng.Common.Serialization.WritePacket;
 
 namespace BengBeng.GameServer.PacketHandlers
 {
@@ -12,10 +12,10 @@ namespace BengBeng.GameServer.PacketHandlers
             playerData.WriteLoginCount(0);
             playerData.WriteMaxFriends(50);
             playerData.WriteFriendPoints(0);
-            playerData.WriteStoryProgress(0);
+            playerData.WriteStoryProgress(20);
             // playerData.WriteTutorialProgress(0);
             playerData.WriteEquips(new int[] { 0, 0, 0, 0, 0, 0, 0, 0 });
-            playerData.WriteNick("KOK");
+            playerData.WriteNick("BengHuai enjoyer");
             playerData.WriteCms("BengBeng");
             playerData.WritePlayerLevel(1);
             playerData.WritePlayerExp(10);

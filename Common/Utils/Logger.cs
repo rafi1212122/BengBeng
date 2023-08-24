@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Common.Utils
+namespace BengBeng.Common.Utils
 {
     public class Logger
     {

@@ -1,4 +1,4 @@
-﻿namespace Common.Serialization
+﻿namespace BengBeng.Common.Serialization
 {
     public enum CommandType
     {

@@ -1,9 +1,9 @@
 ﻿using System.Buffers.Binary;
 using System.Net.Sockets;
 using BengBeng.GameServer;
-using Common;
-using Common.Serialization;
-using Common.Utils;
+using BengBeng.Common;
+using BengBeng.Common.Serialization;
+using BengBeng.Common.Utils;
 
 namespace BengBeng.GameServer
 {

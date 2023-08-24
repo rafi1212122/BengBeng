@@ -1,7 +1,7 @@
 ﻿using System.Net.Sockets;
 using System.Net;
-using Common;
-using Common.Utils;
+using BengBeng.Common;
+using BengBeng.Common.Utils;
 
 namespace BengBeng.GameServer
 {

@@ -1,8 +1,8 @@
 ﻿using System.Net.NetworkInformation;
 using System.Text;
 using BengBeng.GameServer;
-using Common;
-using Common.Serialization;
+using BengBeng.Common;
+using BengBeng.Common.Serialization;
 
 namespace BengBeng
 {

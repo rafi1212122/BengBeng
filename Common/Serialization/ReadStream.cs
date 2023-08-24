@@ -2,7 +2,7 @@
 using System.Net;
 using System.Runtime.InteropServices;
 
-namespace Common.Serialization
+namespace BengBeng.Common.Serialization
 {
     public class ReadStream
     {

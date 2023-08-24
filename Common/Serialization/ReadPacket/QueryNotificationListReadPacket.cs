@@ -1,4 +1,4 @@
-﻿namespace Common.Serialization.ReadPacket
+﻿namespace BengBeng.Common.Serialization.ReadPacket
 {
     public class QueryNotificationListReadPacket : IBasePacket
     {

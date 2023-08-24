@@ -1,8 +1,8 @@
-﻿using Common.Utils;
+﻿using BengBeng.Common.Utils;
 using MongoDB.Driver;
 using Config.Net;
 
-namespace Common
+namespace BengBeng.Common
 {
     public static class Global
     {

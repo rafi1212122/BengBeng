@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Common.Serialization.Packet
+﻿namespace BengBeng.Common.Serialization.Packet
 {
     public class SyncPackDataPacket : IBasePacket
     {

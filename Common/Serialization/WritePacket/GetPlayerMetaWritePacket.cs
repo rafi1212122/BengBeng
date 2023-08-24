@@ -1,13 +1,12 @@
 ﻿namespace BengBeng.Common.Serialization.WritePacket
 {
-    public class QueryNotificationListWritePacket : IBasePacket
+    public class GetPlayerMetaWritePacket : IBasePacket
     {
-        private const short MAX_LIST_COUNT = 100;
-        private byte count;
+        private byte flag;
 
-        public QueryNotificationListWritePacket()
+        public GetPlayerMetaWritePacket(byte flag)
         {
-            count = 0;
+            this.flag = flag;
         }
 
         public void Serialize(ReadStream readStream)
@@ -17,7 +16,7 @@
 
         public void Serialize(ref WriteStream writeStream)
         {
-            writeStream.Serialize(count, MAX_LIST_COUNT);
+            writeStream.Serialize(flag);
         }
     }
 }

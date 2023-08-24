@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Common.Serialization;
-using Common.Serialization.WritePacket;
+using BengBeng.Common.Serialization;
+using BengBeng.Common.Serialization.WritePacket;
 
 namespace BengBeng.GameServer.PacketHandlers
 {

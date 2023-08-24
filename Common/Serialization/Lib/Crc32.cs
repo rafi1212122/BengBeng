@@ -4,7 +4,7 @@
 
 using System.Security.Cryptography;
 
-namespace Common.Serialization.Lib
+namespace BengBeng.Common.Serialization.Lib
 {
     /// <summary>
     /// Implements a 32-bit CRC hash algorithm compatible with Zip etc.

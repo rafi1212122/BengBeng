@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Common.Serialization.WritePacket
+namespace BengBeng.Common.Serialization.WritePacket
 {
     public class QueryPlayerDataWritePacket : IBasePacket
     {

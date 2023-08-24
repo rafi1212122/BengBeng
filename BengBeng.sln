@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BengBeng", "BengBeng\BengBeng.csproj", "{4D0901B6-16D4-439F-98AF-D5214A5D8D36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BengBeng", "BengBeng\BengBeng.csproj", "{4D0901B6-16D4-439F-98AF-D5214A5D8D36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{1CD88E1A-F6D2-44BA-86E8-8C2AA7A15B35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BengBeng.Common", "Common\BengBeng.Common.csproj", "{1CD88E1A-F6D2-44BA-86E8-8C2AA7A15B35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpServer", "HttpServer\HttpServer.csproj", "{6C63E826-ADC4-4685-BABB-4CADC2A6EC8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpServer", "HttpServer\HttpServer.csproj", "{6C63E826-ADC4-4685-BABB-4CADC2A6EC8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

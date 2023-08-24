@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Common.Serialization
+namespace BengBeng.Common.Serialization
 {
     public class DATA_STRING
     {

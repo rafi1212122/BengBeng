@@ -1,17 +1,12 @@
 ﻿namespace BengBeng.Common.Serialization.ReadPacket
 {
-    public class StoryProgressReadPacket : IBasePacket
+    public class GetPlayerMetaReadPacket : IBasePacket
     {
-        private short progress;
-
-        public StoryProgressReadPacket()
-        {
-            progress = 0;
-        }
+        private int uid;
 
         public void Serialize(ReadStream readStream)
         {
-            progress = readStream.Serialize(progress);
+            uid = readStream.Serialize(uid);
         }
 
         public void Serialize(ref WriteStream writeStream)
@@ -19,9 +14,9 @@
             throw new NotImplementedException();
         }
 
-        public short GetProgress()
+        public int GetUid()
         {
-            return progress;
+            return uid;
         }
     }
 }

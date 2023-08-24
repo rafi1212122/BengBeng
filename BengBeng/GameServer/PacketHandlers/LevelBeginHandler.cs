@@ -1,5 +1,5 @@
-﻿using Common.Serialization;
-using Common.Serialization.Packet;
+﻿using BengBeng.Common.Serialization;
+using BengBeng.Common.Serialization.Packet;
 using Newtonsoft.Json;
 
 namespace BengBeng.GameServer.PacketHandlers

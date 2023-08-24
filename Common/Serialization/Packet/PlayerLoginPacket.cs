@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Common.Serialization.Packet
+namespace BengBeng.Common.Serialization.Packet
 {
     public class PlayerLoginPacket : IBasePacket
     {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace Common.Serialization.WritePacket
+namespace BengBeng.Common.Serialization.WritePacket
 {
     public class SyncStageBonusWritePacket : IBasePacket
     {

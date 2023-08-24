@@ -1,7 +1,7 @@
 ﻿using BengBeng.GameServer;
-using Common.Serialization;
-using Common.Serialization.ReadPacket;
-using Common.Serialization.WritePacket;
+using BengBeng.Common.Serialization;
+using BengBeng.Common.Serialization.ReadPacket;
+using BengBeng.Common.Serialization.WritePacket;
 
 namespace BengBeng.GameServer.PacketHandlers
 {

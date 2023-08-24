@@ -1,8 +1,8 @@
-﻿using Common.Serialization;
-using Common.Utils;
+﻿using BengBeng.Common.Serialization;
+using BengBeng.Common.Utils;
 using System.Reflection;
 using System.Buffers.Binary;
-using Common.Serialization.Lib;
+using BengBeng.Common.Serialization.Lib;
 
 namespace BengBeng.GameServer
 {
@@ -87,7 +87,6 @@ namespace BengBeng.GameServer
         {
             byte[] compareHash = new byte[4];
             Array.Copy(buf, 34, compareHash, 0, 4);
-
 
             return GetHash() == BinaryPrimitives.ReverseEndianness(BitConverter.ToUInt32(compareHash));
         }

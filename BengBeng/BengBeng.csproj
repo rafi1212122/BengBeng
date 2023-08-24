@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	<ProjectReference Include="..\Common\Common.csproj" />
+	<ProjectReference Include="..\Common\BengBeng.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
 	<ProjectReference Include="..\HttpServer\HttpServer.csproj" />
