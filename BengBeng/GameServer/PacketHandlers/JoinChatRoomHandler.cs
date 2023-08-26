@@ -11,11 +11,12 @@ namespace BengBeng.GameServer.PacketHandlers
         {
             ReadStream readStream = new(packet.data, (uint)packet.data.Length);
 
-            JoinChatRoomReadPacket readPacket = new JoinChatRoomReadPacket();
+            JoinChatRoomReadPacket readPacket = new();
             readPacket.Serialize(readStream);
 
             WriteStream writeStream = new WriteStream();
             JoinChatRoomWritePacket writePacket = new(0, readPacket.GetRoomId());
+            writePacket.Serialize(ref writeStream);
 
             session.Send(Packet.Create(writeStream, CommandType.CMD_JOIN_CHATROOM_RSP));
         }

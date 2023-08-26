@@ -17,6 +17,7 @@
         public void Serialize(ref WriteStream writeStream)
         {
             writeStream.Serialize(flag);
+            writeStream.Serialize((byte)0);
         }
     }
 }

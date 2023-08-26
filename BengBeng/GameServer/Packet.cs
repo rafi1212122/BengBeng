@@ -53,14 +53,14 @@ namespace BengBeng.GameServer
             Array.Copy(streamBytes, 0, packet, 38, streamBytes.Length);
             BinaryPrimitives.WriteInt32BigEndian(packet, packet.Length);
             BinaryPrimitives.WriteInt16BigEndian(packet.AsSpan()[4..], cmdId);
-            BinaryPrimitives.WriteUInt16BigEndian(packet.AsSpan()[6..], 17942);
-            BinaryPrimitives.WriteUInt64BigEndian(packet.AsSpan()[8..], ulong.MaxValue);
+            BinaryPrimitives.WriteUInt16BigEndian(packet.AsSpan()[6..], 25110);
+            BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[8..], 1);
             // BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[16..], 1);
             // BinaryPrimitives.WriteInt16BigEndian(packet.AsSpan()[28..], 0x0400);
             if (cmdId == 6 || cmdId == 17)
                 BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], Convert.ToInt64(Crc32.Compute(packet)));
             else
-                BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], Convert.ToInt64(Crc32.Compute(4075075703, packet)));
+                BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], 0L);
             // BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], (long)(((ulong)(DateTime.Now.Ticks / 10000L) / 1000UL) << 32 | Convert.ToUInt64(Crc32.Compute(packet))));
             return new Packet(packet);
         }
@@ -71,14 +71,14 @@ namespace BengBeng.GameServer
             short cmdId = (short)command;
             BinaryPrimitives.WriteInt32BigEndian(packet, packet.Length);
             BinaryPrimitives.WriteInt16BigEndian(packet.AsSpan()[4..], cmdId);
-            BinaryPrimitives.WriteUInt16BigEndian(packet.AsSpan()[6..], 17942);
-            BinaryPrimitives.WriteUInt64BigEndian(packet.AsSpan()[8..], ulong.MaxValue);
+            BinaryPrimitives.WriteUInt16BigEndian(packet.AsSpan()[6..], 25110);
+            BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[8..], 1);
             // BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[16..], 1);
             // BinaryPrimitives.WriteInt16BigEndian(packet.AsSpan()[28..], 0x0400);
             if (cmdId == 6 || cmdId == 17)
                 BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], Convert.ToInt64(Crc32.Compute(packet)));
             else
-                BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], Convert.ToInt64(Crc32.Compute(4075075703, packet)));
+                BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], 0L);
             // BinaryPrimitives.WriteInt64BigEndian(packet.AsSpan()[30..], (long)(((ulong)(DateTime.Now.Ticks / 10000L) / 1000UL) << 32 | Convert.ToUInt64(Crc32.Compute(packet))));
             return new Packet(packet);
         }
@@ -87,6 +87,7 @@ namespace BengBeng.GameServer
         {
             byte[] compareHash = new byte[4];
             Array.Copy(buf, 34, compareHash, 0, 4);
+            Console.WriteLine(GetHash());
 
             return GetHash() == BinaryPrimitives.ReverseEndianness(BitConverter.ToUInt32(compareHash));
         }
@@ -98,7 +99,7 @@ namespace BengBeng.GameServer
             byte[] hash = new byte[8];
             Array.Copy(hash, 0, tmpBuf, 30, 8);
 
-            return (cmdId == 6 || cmdId == 17) ? Crc32.Compute(tmpBuf) : Crc32.Compute(4075075703, tmpBuf);
+            return (cmdId == 6 || cmdId == 17) ? Crc32.Compute(tmpBuf) : 0;
         }
     }
 

@@ -61,11 +61,11 @@ namespace BengBeng.Common
             [Option(DefaultValue = "127.0.0.1")]
             public string Host { get; set; }
 
-            [Option(DefaultValue = (uint)(15004))]
-            public uint Port { get; set; }
+            [Option(DefaultValue = (short)(15004))]
+            public short Port { get; set; }
             
-            [Option(DefaultValue = (uint)(26001))]
-            public uint SecondaryPort { get; set; }
+            [Option(DefaultValue = (short)(26001))]
+            public short SecondaryPort { get; set; }
         }
 
         public interface IHttp

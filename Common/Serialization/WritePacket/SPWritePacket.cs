@@ -20,7 +20,7 @@
                 throw new InvalidDataException();
             writeStream.Serialize((byte)1);
             writeStream.Serialize((byte)2);
-            writeStream.Serialize((ushort)17942);
+            writeStream.Serialize((ushort)25110);
         }
 
         public void Serialize(ReadStream readStream)
