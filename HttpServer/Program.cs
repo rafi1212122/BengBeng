@@ -20,6 +20,7 @@ namespace HttpServer
             app.Urls.Add($"https://*:{Global.config.Http.HttpsPort}");
 
             app.UseMiddleware<RequestLoggingMiddleware>();
+            app.UseMiddleware<ImageNotFoundMiddleware>();
 
             try
             {
@@ -27,7 +28,7 @@ namespace HttpServer
                 {
                     RequestPath = string.Empty,
                     ServeUnknownFileTypes = true,
-                    FileProvider = new PhysicalFileProvider(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "Resources\\Static"))
+                    FileProvider = new PhysicalFileProvider(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "Resources/Static"))
                 });
             }
             catch (Exception)
@@ -65,6 +66,30 @@ namespace HttpServer
                     {
                         c.Log($"{context.Response.StatusCode} {context.Request.Method.ToUpper()} {context.Request.Path}");
                     }
+                }
+            }
+        }
+
+        public class ImageNotFoundMiddleware
+        {
+            private readonly RequestDelegate _next;
+
+            public ImageNotFoundMiddleware(RequestDelegate next)
+            {
+                _next = next;
+            }
+
+            public async Task Invoke(HttpContext context)
+            {
+                await _next(context);
+
+                if (File.Exists("Resources/Static/not_found.png") && context.Response.StatusCode == StatusCodes.Status404NotFound &&
+                    context.Request.Path.ToString().StartsWith("/images/") == true)
+                {
+                    context.Response.StatusCode = 200;
+                    var imageBytes = File.ReadAllBytes("Resources/Static/not_found.png");
+                    context.Response.ContentType = "image/png";
+                    await context.Response.Body.WriteAsync(imageBytes);
                 }
             }
         }

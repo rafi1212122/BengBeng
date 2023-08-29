@@ -2,7 +2,7 @@
 
 namespace BengBeng.Common.Serialization.WritePacket
 {
-    public class SyncStageBonusWritePacket : IBasePacket
+    public class SyncStageBonusWritePacket : IPacket
     {
         private const int MAX_LIST_COUNT = 100;
         private byte num;

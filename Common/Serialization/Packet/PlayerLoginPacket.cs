@@ -3,7 +3,7 @@ using System.Text;
 
 namespace BengBeng.Common.Serialization.Packet
 {
-    public class PlayerLoginPacket : IBasePacket
+    public class PlayerLoginPacket : IPacket
     {
         private const int STR_MAX_LEN = 50;
         public DATA_STRING strUUID;

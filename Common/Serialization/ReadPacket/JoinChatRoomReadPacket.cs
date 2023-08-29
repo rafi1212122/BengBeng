@@ -1,6 +1,6 @@
 ﻿namespace BengBeng.Common.Serialization.ReadPacket
 {
-    public class JoinChatRoomReadPacket : IBasePacket
+    public class JoinChatRoomReadPacket : IPacket
     {
         private int _room_id;
 

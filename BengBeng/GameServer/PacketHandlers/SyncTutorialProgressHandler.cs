@@ -4,19 +4,20 @@ using BengBeng.Common.Serialization.WritePacket;
 
 namespace BengBeng.GameServer.PacketHandlers
 {
-    [PacketCmdId(CommandType.CMD_SYNC_STORY_PROGRESS)]
-    internal class SyncStoryProgressHandler : IPacketHandler
+    [PacketCmdId(CommandType.CMD_SYNC_TUTORIAL_PROGRESS)]
+    internal class SyncTutorialProgressHandler : IPacketHandler
     {
         public void Handle(Session session, Packet packet)
         {
-            StoryProgressReadPacket storyProgressSync = new();
             ReadStream readStream = new(packet.data, (uint)packet.data.Length);
-            storyProgressSync.Serialize(readStream);
+
+            TutorialProgressReadPacket readPacket = new();
+            readPacket.Serialize(readStream);
 
             PlayerDataWriter playerData = new();
-            playerData.WriteStoryProgress((ushort)storyProgressSync.GetProgress());
+            playerData.WriteTutorialProgress((ushort)readPacket.GetProgress());
             WriteStream writeStream = new();
-            QueryPlayerDataWritePacket playerDataWritePacket = new(15, playerData.ToVarDataString());
+            QueryPlayerDataWritePacket playerDataWritePacket = new(16, playerData.ToVarDataString());
             playerDataWritePacket.Serialize(ref writeStream);
 
             session.Send(Packet.Create(writeStream, CommandType.CMD_GET_PLAER_DATA_RSP));

@@ -1,6 +1,6 @@
 ﻿namespace BengBeng.Common.Serialization.ReadPacket
 {
-    public class QueryPlayerDataReadPacket : IBasePacket
+    public class QueryPlayerDataReadPacket : IPacket
     {
         private byte requestType;
 

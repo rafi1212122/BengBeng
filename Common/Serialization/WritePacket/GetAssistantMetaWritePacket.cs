@@ -3,7 +3,7 @@
 namespace BengBeng.Common.Serialization.WritePacket
 {
     // TODO: Implement more full fields
-    public class GetAssistantMetaWritePacket : IBasePacket
+    public class GetAssistantMetaWritePacket : IPacket
     {
         private const short MAX_LIST_COUNT = 100;
         private byte count;
@@ -35,7 +35,7 @@ namespace BengBeng.Common.Serialization.WritePacket
 
         public void Serialize(ref WriteStream writeStream)
         {
-            writeStream.Serialize(count, MAX_LIST_COUNT);
+            writeStream.Serialize(count);
         }
     }
 }

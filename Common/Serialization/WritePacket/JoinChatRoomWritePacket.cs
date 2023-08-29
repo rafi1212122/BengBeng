@@ -1,6 +1,6 @@
 ﻿namespace BengBeng.Common.Serialization.WritePacket
 {
-    public class JoinChatRoomWritePacket : IBasePacket
+    public class JoinChatRoomWritePacket : IPacket
     {
         private byte _retcode;
         private int _room_id;

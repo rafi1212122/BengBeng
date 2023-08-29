@@ -1,6 +1,6 @@
 ﻿namespace BengBeng.Common.Serialization.Packet
 {
-    public class LevelBeginPacket : IBasePacket
+    public class LevelBeginPacket : IPacket
     {
         private const byte MAX_LIST_COUNT = 10;
         public byte[] rareDropType;

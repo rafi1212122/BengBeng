@@ -1,6 +1,6 @@
 ﻿namespace BengBeng.Common.Serialization.Packet
 {
-    public class SyncPackDataPacket : IBasePacket
+    public class SyncPackDataPacket : IPacket
     {
         private const short MAX_LIST_COUNT = 400;
         private const int MAX_SKILL_PER_ITEM = 5;
@@ -11,6 +11,8 @@
         private int[] exp;
         private byte[] protection;
         private byte[] star;
+        private byte[] isPersonate;
+        private byte[] intimacy;
         private byte[] skillCount;
         private int[,] skillIdMap;
         private int[,] skillLevelMap;
@@ -30,6 +32,8 @@
             exp = Array.Empty<int>();
             protection = Array.Empty<byte>();
             star = Array.Empty<byte>();
+            isPersonate = Array.Empty<byte>();
+            intimacy = Array.Empty<byte>();
             skillCount = Array.Empty<byte>();
             skillIdMap = new int[0, MAX_SKILL_PER_ITEM];
             skillLevelMap = new int[0, MAX_SKILL_PER_ITEM];
@@ -43,17 +47,21 @@
         public void PopulateDummy()
         {
             opType = 3;
-            count = 0;
-            type = new byte[] { 0 };
-            id = new int[] { 0 };
-            tmpId = new int[] { 1 };
-            level = new short[] { 0 };
-            exp = new int[] { 0 };
-            protection = new byte[] { 0 };
-            star = new byte[] { 1 };
-            skillCount = new byte[] { MAX_SKILL_PER_ITEM };
-            skillIdMap = new int[1, MAX_SKILL_PER_ITEM];
-            skillLevelMap = new int[1, MAX_SKILL_PER_ITEM];
+            count = 5;
+            type = new byte[] { 1, 1, 5, 2, 1 };
+            id = new int[] { 1, 5, 4001, 1003, 31 }; // Why 4001...
+            tmpId = new int[] { 1001, 1002, 1003, 1004, 1005 };
+            level = new short[] { 1, 1, 1, 1, 1 };
+            exp = new int[] { 0, 0, 0, 0, 0 };
+            protection = new byte[] { 0, 0, 0, 0, 0 };
+            star = new byte[] { 0, 0, 0, 0, 0 };
+            isPersonate = new byte[] { 0, 0, 0, 0, 0 };
+            intimacy = new byte[] { 0, 0, 0, 0, 0 };
+            skillCount = new byte[] { 0, 0, 0, 1, 0 };
+            skillIdMap = new int[count, MAX_SKILL_PER_ITEM];
+            skillLevelMap = new int[count, MAX_SKILL_PER_ITEM];
+            skillIdMap[3, 0] = 63001;
+            skillLevelMap[3, 0] = 0;
         }
 
         public void Serialize(ref WriteStream writeStream)
@@ -70,12 +78,14 @@
                 writeStream.Serialize(exp[i]);
                 writeStream.Serialize(protection[i]);
                 writeStream.Serialize(star[i]);
+                writeStream.Serialize(isPersonate[i]);
+                writeStream.Serialize(intimacy[i]);
                 writeStream.Serialize(skillCount[i]);
 
                 for (int j = 0; j < skillCount[i]; j++)
                 {
                     writeStream.Serialize(skillIdMap[i, j]);
-                    writeStream.Serialize(skillLevelMap[i, j]);
+                    writeStream.Serialize((byte)skillLevelMap[i, j]);
                 }
             }
         }

@@ -1,6 +1,6 @@
 ﻿namespace BengBeng.Common.Serialization.WritePacket
 {
-    public class SPWritePacket : IBasePacket
+    public class SPWritePacket : IPacket
     {
         private const int MAX_NUM = 100;
         private byte num;
@@ -18,9 +18,22 @@
         {
             if (num > MAX_NUM)
                 throw new InvalidDataException();
-            writeStream.Serialize((byte)1);
+            writeStream.Serialize((byte)7);
+
             writeStream.Serialize((byte)2);
             writeStream.Serialize((ushort)25110);
+            writeStream.Serialize((byte)4);
+            writeStream.Serialize((ushort)1);
+            writeStream.Serialize((byte)6);
+            writeStream.Serialize((ushort)0);
+            writeStream.Serialize((byte)7);
+            writeStream.Serialize((ushort)1);
+            writeStream.Serialize((byte)11);
+            writeStream.Serialize((ushort)0);
+            writeStream.Serialize((byte)18);
+            writeStream.Serialize((ushort)1);
+            writeStream.Serialize((byte)19);
+            writeStream.Serialize((ushort)1);
         }
 
         public void Serialize(ReadStream readStream)

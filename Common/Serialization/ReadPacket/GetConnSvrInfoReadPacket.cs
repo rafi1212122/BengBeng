@@ -1,6 +1,6 @@
 ﻿namespace BengBeng.Common.Serialization.ReadPacket
 {
-    public class GetConnSvrInfoReadPacket : IBasePacket
+    public class GetConnSvrInfoReadPacket : IPacket
     {
         private const int LIMIT_MAX_TOKEN_LEN = 50;
         private DATA_STRING _strUUID;

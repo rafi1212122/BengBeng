@@ -2,7 +2,7 @@
 
 namespace BengBeng.Common.Serialization.WritePacket
 {
-    public class QueryEggMachineTxtWritePacket : IBasePacket
+    public class QueryEggMachineTxtWritePacket : IPacket
     {
         private byte count;
         private List<string> textList;

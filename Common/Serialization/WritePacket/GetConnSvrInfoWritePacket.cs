@@ -2,7 +2,7 @@
 
 namespace BengBeng.Common.Serialization.WritePacket
 {
-    public class GetConnSvrInfoWritePacket : IBasePacket
+    public class GetConnSvrInfoWritePacket : IPacket
     {
         private const byte MAX_CM_COUNT = 8;
         private byte[] _uServerTypeList;

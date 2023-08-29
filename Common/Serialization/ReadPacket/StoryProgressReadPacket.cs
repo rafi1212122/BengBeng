@@ -1,6 +1,6 @@
 ﻿namespace BengBeng.Common.Serialization.ReadPacket
 {
-    public class StoryProgressReadPacket : IBasePacket
+    public class StoryProgressReadPacket : IPacket
     {
         private short progress;
 

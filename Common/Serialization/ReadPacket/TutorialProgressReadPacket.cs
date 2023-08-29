@@ -1,17 +1,12 @@
 ﻿namespace BengBeng.Common.Serialization.ReadPacket
 {
-    public class QueryNotificationListReadPacket : IPacket
+    public class TutorialProgressReadPacket : IPacket
     {
-        private int msgId;
-
-        public QueryNotificationListReadPacket()
-        {
-            msgId = 0;
-        }
+        private short _progress;
 
         public void Serialize(ReadStream readStream)
         {
-            msgId = readStream.Serialize(msgId);
+            _progress = readStream.Serialize(_progress);
         }
 
         public void Serialize(ref WriteStream writeStream)
@@ -19,9 +14,9 @@
             throw new NotImplementedException();
         }
 
-        public int GetMsgId()
+        public short GetProgress()
         {
-            return msgId;
+            return _progress;
         }
     }
 }

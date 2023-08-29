@@ -19,7 +19,7 @@ namespace BengBeng.GameServer.PacketHandlers
             syncPackData2.Init();
             syncPackData2.Serialize(ref writeStream2);
 
-            // session.Send(Packet.Create(writeStream, CommandType.CMD_SYNC_PACK_DATA));
+           // session.Send(Packet.Create(writeStream, CommandType.CMD_SYNC_PACK_DATA));
             session.Send(Packet.Create(writeStream2, CommandType.CMD_SYNC_PACK_DATA));
         }
     }

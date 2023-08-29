@@ -1,6 +1,6 @@
 ﻿namespace BengBeng.Common.Serialization.Packet
 {
-    public class KeepLivePacket : IBasePacket
+    public class KeepLivePacket : IPacket
     {
         public KeepLivePacket()
         {

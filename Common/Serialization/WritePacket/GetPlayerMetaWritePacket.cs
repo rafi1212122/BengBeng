@@ -1,6 +1,6 @@
 ﻿namespace BengBeng.Common.Serialization.WritePacket
 {
-    public class GetPlayerMetaWritePacket : IBasePacket
+    public class GetPlayerMetaWritePacket : IPacket
     {
         private byte flag;
 

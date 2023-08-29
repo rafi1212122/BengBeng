@@ -1,6 +1,6 @@
 ﻿namespace BengBeng.Common.Serialization.ReadPacket
 {
-    public class GetPlayerMetaReadPacket : IBasePacket
+    public class GetPlayerMetaReadPacket : IPacket
     {
         private int uid;
 
