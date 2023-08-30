@@ -9,6 +9,7 @@ namespace BengBeng.GameServer.PacketHandlers
         public void Handle(Session session, Packet packet)
         {
             GetAssistantMetaWritePacket writePacket = new();
+            writePacket.PopulateDummy();
             WriteStream writeStream = new();
             writePacket.Serialize(ref writeStream);
 

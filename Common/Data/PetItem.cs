@@ -111,7 +111,7 @@ namespace BengBeng.Common.Data
             return new PetItem((int)u, (int)num, num2, (int)num3, (int)num4, (int)b, (int)b2, (int)b3, (int)b4, (int)num5);
         }
 
-        public void WriteToStream(ref WriteStream writeStream)
+        public void SerializeToStream(ref WriteStream writeStream)
         {
             writeStream.Serialize((short)id);
             writeStream.Serialize((short)level);

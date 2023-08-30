@@ -47,17 +47,17 @@
         public void PopulateDummy()
         {
             opType = 3;
-            count = 5;
-            type = new byte[] { 1, 1, 5, 2, 1 };
-            id = new int[] { 1, 5, 4001, 1003, 31 }; // Why 4001...
-            tmpId = new int[] { 1001, 1002, 1003, 1004, 1005 };
-            level = new short[] { 1, 1, 1, 1, 1 };
-            exp = new int[] { 0, 0, 0, 0, 0 };
-            protection = new byte[] { 0, 0, 0, 0, 0 };
-            star = new byte[] { 0, 0, 0, 0, 0 };
-            isPersonate = new byte[] { 0, 0, 0, 0, 0 };
-            intimacy = new byte[] { 0, 0, 0, 0, 0 };
-            skillCount = new byte[] { 0, 0, 0, 1, 0 };
+            count = 6;
+            type = new byte[] { 1, 1, 5, 2, 1, 1 };
+            id = new int[] { 1, 5, 4001, 1003, 31, 140 }; // Why 4001...
+            tmpId = new int[] { 1001, 1002, 1003, 1004, 1005, 1006 };
+            level = new short[] { 1, 1, 1, 1, 1, 90 };
+            exp = new int[] { 0, 0, 0, 0, 0, 0 };
+            protection = new byte[] { 0, 0, 0, 0, 0, 0 };
+            star = new byte[] { 0, 0, 0, 0, 0 , 0 };
+            isPersonate = new byte[] { 0, 0, 0, 0, 0, 0 };
+            intimacy = new byte[] { 0, 0, 0, 0, 0 , 0 };
+            skillCount = new byte[] { 0, 0, 0, 1, 0, 0 };
             skillIdMap = new int[count, MAX_SKILL_PER_ITEM];
             skillLevelMap = new int[count, MAX_SKILL_PER_ITEM];
             skillIdMap[3, 0] = 63001;

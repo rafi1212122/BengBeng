@@ -10,7 +10,7 @@ namespace BengBeng.GameServer.PacketHandlers
         public void Handle(Session session, Packet packet)
         {
             PlayerDataWriter playerData = new();
-            playerData.WritePlayerLevel(1);
+            playerData.WritePlayerLevel(80);
             playerData.WritePlayerExp(0);
             playerData.WriteHcoin(0);
             playerData.WriteScoin(0);
@@ -22,14 +22,14 @@ namespace BengBeng.GameServer.PacketHandlers
             playerData.WriteAdPoints(0);
             playerData.WriteLoginCount(0);
             playerData.WriteAppstoreRating(0);
-            playerData.WriteStoryProgress(0);
-            playerData.WriteTutorialProgress(0);
+            /*playerData.WriteStoryProgress(0);
+            playerData.WriteTutorialProgress(0);*/
             playerData.WriteCurElp(0);
             playerData.WriteTipsStat(0, 0, 0, 0);
             playerData.WriteHasRealName(false);
             playerData.WriteStSaved(0);
             playerData.WriteAssistLeft(0);
-            playerData.WriteEmblemId(1);
+            playerData.WriteEmblemId(0);
             WriteStream writeStream = new();
             QueryPlayerDataWritePacket playerDataWritePacket = new(100, playerData.ToVarDataString());
             playerDataWritePacket.Serialize(ref writeStream);
